@@ -5,7 +5,6 @@ import { Notification } from './notification/Notification';
 import { Section } from './section/Section';
 
 // Репета импорт
-// пропсы
 
 export class App extends Component {
   state = {
