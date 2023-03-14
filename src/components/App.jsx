@@ -3,8 +3,7 @@ import { FeedbackOptions } from './feedbackOptions/FeedbackOptions';
 import { Statistics } from './statistics/Statistics';
 import { Notification } from './notification/Notification';
 import { Section } from './section/Section';
-
-// Репета импорт
+import options from '../uitils/feedbackOptions.json';
 
 export class App extends Component {
   state = {
@@ -13,10 +12,10 @@ export class App extends Component {
     bad: 0,
   };
 
-  onClickFeedback = e => {
+  onClickFeedback = name => {
     this.setState(prevState => {
       return {
-        [e.target.className]: prevState[e.target.className] + 1,
+        [name]: prevState[name] + 1,
       };
     });
   };
@@ -35,12 +34,13 @@ export class App extends Component {
     return (
       <div className="main-div">
         <Section title="Please leave feedback">
-          <FeedbackOptions onLeaveFeedback={this.onClickFeedback} />
+          <FeedbackOptions
+            options={options}
+            onLeaveFeedback={this.onClickFeedback}
+          />
         </Section>
         <Section title="Statistics">
-          {this.state.good === 0 &&
-          this.state.neutral === 0 &&
-          this.state.bad === 0 ? (
+          {total === 0 ? (
             <Notification message="There is no feedback" />
           ) : (
             <Statistics
