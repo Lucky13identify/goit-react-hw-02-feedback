@@ -36,3 +36,11 @@ button:hover {
 section {
   padding-bottom: 50px;
 }
+
+.main-div {
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  font-size: 30;
+  color: #010101;
+}
